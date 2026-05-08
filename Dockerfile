@@ -1,7 +1,7 @@
 ##################################################
 # Build layer
 ##################################################
-FROM debian:latest as build
+FROM debian:latest AS build
 
 WORKDIR /build
 
@@ -33,9 +33,9 @@ RUN mkdir build && cd build && \
 ##################################################
 # Runtime layer
 ##################################################
-FROM debian:latest as runtime
+FROM debian:latest AS runtime
 
-LABEL org.opencontainers.image.source=https://github.com/bbc/bmx
+LABEL org.opencontainers.image.source=https://github.com/ebu/bmx
 LABEL org.opencontainers.image.description="A useful set of tools for handling MXF and related files"
 LABEL org.opencontainers.image.licenses=BSD-3-Clause
 
