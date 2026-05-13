@@ -1,5 +1,6 @@
 add_executable(bmxparse
     bmxparse.cpp
+    ${BMX_WIN_MANIFEST_SRC}
 )
 
 target_include_directories(bmxparse PRIVATE
