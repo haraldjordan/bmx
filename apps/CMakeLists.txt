@@ -12,7 +12,6 @@ if(MSVC)
     # build generators. So adding it as a source file instead of an explicit linking option,
     # CMake should cover both cases the right way.
     set(BMX_WIN_MANIFEST_SRC "${CMAKE_CURRENT_BINARY_DIR}/bmx_windows.generated.manifest")
-    #add_link_options("/MANIFEST:EMBED" "/MANIFESTINPUT:${CMAKE_CURRENT_BINARY_DIR}/bmx_windows.generated.manifest")
 
     # /manifest file is not found when incremental is enabled (default Debug build config), so we disable it.
     add_link_options("$<$<CONFIG:Debug>:/INCREMENTAL:NO>")
