@@ -5,6 +5,7 @@ add_executable(mxf2raw
     AvidInfoOutput.cpp
     mxf2raw.cpp
     OutputFileManager.cpp
+    ${BMX_WIN_MANIFEST_SRC}
 )
 
 target_include_directories(mxf2raw PRIVATE

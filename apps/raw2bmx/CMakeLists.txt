@@ -1,6 +1,7 @@
 add_executable(raw2bmx
     raw2bmx.cpp
     RawInputTrack.cpp
+    ${BMX_WIN_MANIFEST_SRC}
 )
 
 target_include_directories(raw2bmx PRIVATE

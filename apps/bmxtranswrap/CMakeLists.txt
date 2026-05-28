@@ -1,6 +1,7 @@
 add_executable(bmxtranswrap
     bmxtranswrap.cpp
     MXFInputTrack.cpp
+    ${BMX_WIN_MANIFEST_SRC}
 )
 
 target_include_directories(bmxtranswrap PRIVATE
