@@ -1,6 +1,6 @@
 # IMF Track Files
 
-The MXF OP1a writer has an Interoperable Master Format (IMF) flavour that helps with the creation of IMF Track Files (as defined in [SMPTE ST 2067-2](https://ieeexplore.ieee.org/document/9097478)). The flavour makes it easier to create IMF Track Files by pre-selecting certain required options. However, it does not have knowledge of all the Track Files defined for IMF (across SMPTE ST 2067-2, the IMF Applications, the IMF Plug-ins, etc) and it does not enforce compliance. For example, it does not check that the input essence and metadata will result in a compliant Track File.
+The MXF OP1a writer has an Interoperable Master Format (IMF) flavour that helps with the creation of IMF Track Files (as defined in [SMPTE ST 2067-2](https://doi.org/10.5594/SMPTE.ST2067-2)). The flavour makes it easier to create IMF Track Files by pre-selecting certain required options. However, it does not have knowledge of all the Track Files defined for IMF (across SMPTE ST 2067-2, the IMF Applications, the IMF Plug-ins, etc) and it does not enforce compliance. For example, it does not check that the input essence and metadata will result in a compliant Track File.
 
 The IMF flavour is enabled using the `-t imf` clip type option in bmxtranswrap and raw2bmx. This results in the following settings for OP1a,
 
@@ -20,7 +20,7 @@ IMF Track Files contain only a single essence component. bmx provides support fo
 
 A number of topics related to creating complete IMF Track Files can be found in the [docs/](./) directory, including Multi-channel Audio Labels, Timed Text, JPEG 2000 and ProRes.
 
-The bmxtranswrap and raw2bmx tools allow setting metadata defined in [SMPTE ST 2067-2](https://ieeexplore.ieee.org/document/9097478),
+The bmxtranswrap and raw2bmx tools allow setting metadata defined in [SMPTE ST 2067-2](https://doi.org/10.5594/SMPTE.ST2067-2):
 
 * Reference Image Edit Rate (`--ref-image-edit-rate`)
 * Reference Audio Alignment Level (`--ref-audio-align-level`)
@@ -30,7 +30,7 @@ The bmxtranswrap and raw2bmx tools allow setting metadata defined in [SMPTE ST 2
 * Active Y Offset (`--active-y-offset`)
 * Alternative Center Cuts (`--center-cut-4-3` and `--center-cut-14-9`)
 
-and [SMPTE ST 2067-21 - Application #2E](https://ieeexplore.ieee.org/document/9097487),
+and [SMPTE ST 2067-21 - Application #2E](https://doi.org/10.5594/SMPTE.ST2067-21.2023):
 
 * Mastering Display Primaries (`--display-primaries`)
 * Mastering Display White Point Chromaticity (`--display-white-point`)

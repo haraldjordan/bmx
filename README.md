@@ -4,7 +4,7 @@
 
 # bmx Library and Utilities
 
-bmx is a library and set of utilities to read and write the [SMPTE ST 377-1 MXF file format](https://ieeexplore.ieee.org/document/7292073).
+bmx is a library and set of utilities to read and write the [SMPTE ST 377-1 MXF file format](https://doi.org/10.5594/SMPTE.ST377-1).
 
 bmx is used to support standardisation efforts in the broadcast industry. It provides utilities for creating standard compliant sample files. It serves as an example implementation for MXF file format standards.
 
@@ -32,29 +32,29 @@ The following input and output wrapper formats and flavours are supported:
 * [AMWA AS-02](https://www.amwa.tv/specifications) MXF Versioning
 * [AMWA AS-10](https://www.amwa.tv/specifications) MXF for Production
 * [AMWA AS-11](https://www.amwa.tv/specifications) Media Contribution File Formats (MXF)
-* [SMPTE ST 378](https://ieeexplore.ieee.org/document/7291764) MXF OP1a
-* [SMPTE RDD 9](https://ieeexplore.ieee.org/document/7290714) MXF MPEG Long GOP (Sony XDCAM)
-* [SMPTE ST 386](https://ieeexplore.ieee.org/document/7291350) MXF D-10 (Sony MPEG IMX)
-* [SMPTE ST 2067-5](https://ieeexplore.ieee.org/document/9099734) Interoperable Master Format (IMF) - Essence Component
+* [SMPTE ST 378](https://doi.org/10.5594/SMPTE.ST378.2004) MXF OP1a
+* [SMPTE RDD 9](https://doi.org/10.5594/SMPTE.RDD9.2013) MXF MPEG Long GOP (Sony XDCAM)
+* [SMPTE ST 386](https://doi.org/10.5594/SMPTE.ST386.2004) MXF D-10 (Sony MPEG IMX)
+* [SMPTE ST 2067-5](https://doi.org/10.5594/SMPTE.ST2067-5) Interoperable Master Format (IMF) - Essence Component
 * [Avid native MXF OPAtom](https://www.avid.com/static/resources/common/documents/mxf.pdf)
 * [WAV](https://en.wikipedia.org/wiki/WAV)
 
 The following essence formats are supported:
 
-* [SMPTE RP 2027](https://ieeexplore.ieee.org/document/7290936) AVC-Intra video, class 50 / 100 / 200
-* [SMPTE ST 356](https://ieeexplore.ieee.org/document/7290684) D-10 video, 30 / 40 / 50 MBit/s
+* [SMPTE RP 2027](https://doi.org/10.5594/SMPTE.RP2027.2012) AVC-Intra video, class 50 / 100 / 200
+* [SMPTE ST 356](https://doi.org/10.5594/SMPTE.ST356.2001) D-10 video, 30 / 40 / 50 MBit/s
 * [DV](https://en.wikipedia.org/wiki/DV) video, 25 / 50 / 100 MBit/s
 * [MPEG-2](https://www.itu.int/rec/T-REC-H.262) Long GOP video, 422P@HL, MP@HL (1920 and 1440) and MP@H14
 * [JPEG 2000](https://www.itu.int/rec/T-REC-T.800) video
 * [JPEG XS](https://jpeg.org/jpegxs/) video
 * [H.264](https://www.itu.int/rec/T-REC-H.264) video
-* [SMPTE ST 2019](https://ieeexplore.ieee.org/document/7291983) VC-3 video (Avid DNxHD)
-* [SMPTE ST 2042](https://ieeexplore.ieee.org/document/7967896) VC-2 video
-* [SMPTE RDD 36](https://ieeexplore.ieee.org/document/7438722) video (Apple ProRes)
+* [SMPTE ST 2019](https://pub.smpte.org/doc/2019/) VC-3 video (Avid DNxHD)
+* [SMPTE ST 2042](https://pub.smpte.org/doc/2042/) VC-2 video
+* [SMPTE RDD 36](https://doi.org/10.5594/SMPTE.RDD36.2022) video (Apple ProRes)
 * Uncompressed video, UYVY / v210
 * Avid [MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG) video
 * [WAV](https://en.wikipedia.org/wiki/WAV) PCM audio
-* [SMPTE ST 436](https://ieeexplore.ieee.org/document/7290051) encapsulated ANC and VBI data
+* [SMPTE ST 436](https://doi.org/10.5594/SMPTE.ST436-1.2013) encapsulated ANC and VBI data
 * [IMSC 1 Timed Text](https://www.w3.org/TR/ttml-imsc1.0.1/)
 
 ## Topics

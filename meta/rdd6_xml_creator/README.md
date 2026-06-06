@@ -1,8 +1,8 @@
 # RDD 6 XML Creator
 
-The [SMPTE RDD 6](https://ieeexplore.ieee.org/document/7290141) (Dolby E Audio Metadata) XML Creator is a basic HTML web page application that creates an XML file suitable for `bmxtranswrap` to embed a static RDD 6 serial bitstream in an MXF file.
+The [SMPTE RDD 6](https://doi.org/10.5594/SMPTE.RDD6.2008) (Dolby E Audio Metadata) XML Creator is a basic HTML web page application that creates an XML file suitable for `bmxtranswrap` to embed a static RDD 6 serial bitstream in an MXF file.
 
-The [RDD 6 XML Creator](https://bbc.github.io/bmx/meta/rdd6_xml_creator/) can be found online in github.io. It can also be run locally by coping the [index.html](./index.html) and supporting directories ([css](./css) and [js](./js)) to a local file system, or by using a clone of this Git repository.
+The [RDD 6 XML Creator](https://bbc.github.io/bmx/meta/rdd6_xml_creator/) can be found online in github.io. It can also be run locally by copying the [index.html](./index.html) and supporting directories ([css](./css) and [js](./js)) to a local file system, or by using a clone of this Git repository.
 
 Open [RDD 6 XML Creator](https://bbc.github.io/bmx/meta/rdd6_xml_creator/) or `index.html` in a web browser and fill-in the RDD 6 metadata. Select "Save XML" to export to a local file.
 
