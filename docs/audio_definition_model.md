@@ -1,4 +1,4 @@
-# (BETA) -- Audio Definition Model (ADM) and other audio metadata RIFF Chunks
+# Audio Definition Model (ADM) and other audio metadata RIFF Chunks
 
 ## Quick start: Example: convert Wave+ADM (BW64) to IMF ADM Audio Track File (MXF)
 
@@ -26,21 +26,17 @@ _See below for guidance on writing `mca.txt` including specific IMF advice_
 
 ## SMPTE ST 2131 and SMPTE ST 2067-204
 
-SMPTE ST 2131 defines a mechanism for mapping Resource Interchange File Format (RIFF) Chunks containing audio metadata to MXF files to augment MXF Sound Tracks. It defines additional MXF support specifically for the mapping and labeling of content described by Audio Definition Model (ADM) metadata (Recommendation ITU-R BS.2076) which is often carried in Broadcast Wave 64-bit (BW64) RIFF files (Recommendation ITU-R BS.2088).
+[SMPTE ST 2131](https://doi.org/10.5594/SMPTE.ST2131) defines a mechanism for mapping Resource Interchange File Format (RIFF) Chunks containing audio metadata to MXF files to augment MXF Sound Tracks. It defines additional MXF support specifically for the mapping and labeling of content described by Audio Definition Model (ADM) metadata ([Recommendation ITU-R BS.2076](https://www.itu.int/rec/R-REC-BS.2076/)) which is often carried in Broadcast Wave 64-bit (BW64) RIFF files ([Recommendation ITU-R BS.2088](https://www.itu.int/rec/R-REC-BS.2088/)).
 
-SMPTE ST 2067-204 defines a plug-in mechanism to add audio with ADM metadata to IMF Compositions.
-
-Both documents are currently available as Public Committee Drafts (PCD):
-* https://github.com/SMPTE/st2131
-* https://github.com/SMPTE/st2067-204
+[SMPTE ST 2067-204](https://doi.org/10.5594/SMPTE.ST2067-204) defines a plug-in mechanism to add audio with ADM metadata to IMF Compositions.
 
 ## bmx support
 
-Provisional support for SMPTE ST 2131 (PCD) has been implemented in `bmx`. This allows the creation of MXF files for a variety of use cases, including ADM Audio Track Files for use in IMF Compositions (per SMPTE ST 2067-204 (PCD)).
+Support for [SMPTE ST 2131](https://doi.org/10.5594/SMPTE.ST2131) has been implemented in `bmx`. This allows the creation of MXF files for a variety of use cases, including ADM Audio Track Files for use in IMF Compositions (per [SMPTE ST 2067-204](https://doi.org/10.5594/SMPTE.ST2067-204)).
 
 The following formats are supported:
 * **Component form**
-  * Audio as Wave / raw PCM, \<chna\> text file (`bmx` format as [defined below](#chna-text-file-definition-format)) and Wave/RIFF chunk data files (e.g. ADM XML file)
+  * Audio as Wave / raw PCM, \<chna\> text file (`bmx` format as [defined below](#chna-text-file-format)) and Wave/RIFF chunk data files (e.g. ADM XML file)
 * **Wave (BW64)**
   * Reading Wave (BW64) with access to Wave chunks (e.g. ADM \<axml\>) and a parsed ADM \<chna\> chunk
   * Writing Wave (BW64) with additional Wave chunks (e.g. ADM \<axml\>) and a serialised ADM \<chna\> chunk
@@ -66,6 +62,7 @@ The known limitations in the current implementation are:
 - mxf2raw doesn't yet show ADM metadata presence or extraction of all related signalling.
 - There is no parsing of the ADM metadata. Therefore, re-wrapping a file using raw2bmx or bmxtranswrap with an offset or duration change might result in the ADM metadata and references becoming invalid. For example, an ADM audio object might no longer be available after re-wrapping, or its start offset might have changed.
 - \> 4 GB chunk size is only supported for the \<data\> chunk. The ADM chunks are unlikely to be that large but ideally `bmx` would provide support.
+- raw2bmx doesn't provide a way to set the MXF properties `RIFFChunkUUID` and `RIFFChunkHashSHA1` defined by [SMPTE ST 2131](https://doi.org/10.5594/SMPTE.ST2131)
 
 ## Wave+ADM to MXF+ADM mapping process
 
@@ -73,13 +70,14 @@ The process of mapping Wave+ADM to MXF+ADM is basically as follows:
 
 - A \<chna\> chunk is converted to a ADM_CHNASubDescriptor in each Sound Track using the audio channel mapping defined by the `--track-map` option
     - Any null / placeholder entries (those with a trackIndex/track_index of zero) are discarded
+    - The `--no-chna-chunk` option can be used to ignore the \<chna\> chunk
 - The `--wave-chunks` and `--adm-wave-chunk` options are used to select the (non built-in) chunks to transfer to the MXF file
     - The built-in chunks that can't be selected are: \<JUNK\>, \<ds64\>, \<fmt\>, \<fact\>, \<bext\>, \<data\> and \<chna\>
     - The chunk data is copied into MXF generic streams and each will have a RIFFChunkDefinitionSubDescriptor associated with it
     - Sound Tracks containing channels originating from the input file will reference all the chunks from that input file using RIFFChunkReferencesSubDescriptors
 - The `--adm-wave-chunk` option is the same as `--wave-chunks` except that:
     - It identifies only one chunk at a time (but can be used multiple times) and signals that the chunk contains ADM metadata
-    - ADM Profile/Level labels can be provided with the option
+    - ADM Profile/Level labels can be provided with the option ([see below](#adm-profilelevel-labels))
     - An ADMAudioMetadataSubDescriptor descriptor is created and it sits alongside the RIFFChunkDefinitionSubDescriptor for the chunk
 
 ## Creating a Wave+ADM sample file
@@ -88,7 +86,7 @@ A Wave+ADM sample file can be created using the following example commandline gi
 
 `raw2bmx -t wave -o output.wav --wave-chunk-data axml.xml axml --chna-audio-ids chna.txt --wave input.wav`
 
-The \<axml\> file `axml.xml` contains the data that will be written into the \<axml\> chunk. The \<chna\> text file `chna.txt` lists the audio identifiers that make up the \<chna\> chunk. The format of the text file is described in [\<chna\> Text file Definition Format](#chna-text-file-definition-format).
+The \<axml\> file `axml.xml` contains the data that will be written into the \<axml\> chunk. The \<chna\> text file `chna.txt` lists the audio identifiers that make up the \<chna\> chunk. The format of the text file is described in [\<chna\> Text file Definition Format](#chna-text-file-format).
 
 A Wave+ADM sample file can be created without a \<axml\> chunk, i.e. just a \<chna\> chunk, using the following example commandline given a Wave file (which doesn't have a \<axml\> chunk!) and a \<chna\> text file:
 
@@ -173,16 +171,16 @@ The following extra properties can be used on any line where the `chunk_id` prop
 
 ### MCA details for IMF ADM Audio Track Files
 
-If an IMF Audio Track File is being created following Operational Mode A (see SMPTE ST 2067-204) then the following example approach to creating MCA is likely to be appropriate:
+If an IMF Audio Track File is being created following Operational Mode A (see [SMPTE ST 2067-204](https://doi.org/10.5594/SMPTE.ST2067-204)) then the following example approach to creating MCA is likely to be appropriate:
 
 * Write one soundfield group (SG) "label line" for each audioProgramme element defined by the ADM metadata, with the audioProgramme ID put into ADMAudioProgrammeID
 * Start each soundfield group (SG) "label line" with `ADM, chunk_id=axml`
-* Set RFC5646SpokenLanguage and MCATitle to match the ADM metadata (see ST 2067-204 for details)
+* Set RFC5646SpokenLanguage and MCATitle to match the ADM metadata (see [SMPTE ST 2067-204](https://doi.org/10.5594/SMPTE.ST2067-204) for details)
   * RFC5646SpokenLanguage can be left out when appropriate
   * RFC5646SpokenLanguage uses RFC 5646 language tags whereas ADM suggests the use of older ISO 639-1 or -2 codes so translation might be needed
 - MCATitleVersion is always "n/a" unless there are special requirements
 - Set MCAContent and MCAUseClass to properly represent the content of each audioProgramme
-    - Refer to SMPTE ST 377-41 for values and to https://www.imfug.com/TR/audio-track-files/ for examples (Note: the IMF UG document uses the same values but populates older MCA properties)
+    - Refer to [SMPTE ST 377-41](https://doi.org/10.5594/SMPTE.ST377-41) for values and to https://www.imfug.com/TR/audio-track-files/ for examples (Note: the IMF UG document uses the same values but populates older MCA properties)
 
 ### MXF creation commandline for MCA
 
@@ -240,3 +238,30 @@ uid: ATU_00000004
 track_ref: AT_00010002_01
 pack_ref: AP_00010002
 ```
+
+## ADM Profile/Level labels
+
+The raw2bmx option `--adm-wave-chunk` is used in the following form in most of the examples above:
+
+```
+--adm-wave-chunk axml,adm_itu2076
+```
+
+The first part of the value (`axml`) identifies the non-builtin ADM WAVE chunk to transfer across from the input.
+
+The second part (`adm_itu2076`) identifies that the `ADMProfileLevelULBatch` property is to include the Label with Symbol `ADM_ITU2076`. This signals that the ADM metadata conforms to [Recommendation ITU-R BS.2076](https://www.itu.int/rec/R-REC-BS.2076/) but is not further constrained by any defined Profile or Level.
+
+If the ADM is in fact constrained by a Profile/Level then this should be signalled. Other Labels must be formatted as 'urn:smpte:ul:...'
+
+For example, if the ADM conforms to [Recommendation ITU-R BS.2168](https://www.itu.int/rec/R-REC-BS.2168/) ADM Emission Profile Version "1", Level "0" then the following could be used:
+
+```
+--adm-wave-chunk axml,urn:smpte:ul:060e2b34.0401010d.04020211.02010000
+```
+
+Multiple Labels can be specified if required (comma separated).
+
+Normally there should be one Label for each `profile` sub-element of the `profileList` element (if present) in the ADM metadata.
+
+Labels for ADM Profiles/Levels have been added to the SMPTE Metadata Registers. These Labels are used by all MXF/IMF ADM & S-ADM mappings. Labels can be viewed in this public XML file (search for "ADMProfileLevel"): https://registry.smpte-ra.org/view/draft/Labels.xml
+
