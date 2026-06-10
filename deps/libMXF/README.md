@@ -1,6 +1,6 @@
 # libMXF
 
-libMXF is a low-level C library for reading and writing the [SMPTE ST 377-1 MXF file format](https://ieeexplore.ieee.org/document/7292073).
+libMXF is a low-level C library for reading and writing the [SMPTE ST 377-1 MXF file format](https://doi.org/10.5594/SMPTE.ST377-1).
 
 libMXF was originally developed as part of the [Ingex Project](http://ingex.sourceforge.net/) where it supported MXF transfer, playback and storage applications. libMXF was also used in the [BBC Archive Preservation Project](https://www.bbc.co.uk/rd/publications/whitepaper275) to migrate BBC archive content from video tapes to files.
 

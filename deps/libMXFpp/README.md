@@ -1,6 +1,6 @@
 # libMXF++
 
-libMXF++ is a C++ wrapper library for [libMXF](../libMXF/) that supports reading and writing the [SMPTE ST 377-1 MXF file format](https://ieeexplore.ieee.org/document/7292073).
+libMXF++ is a C++ wrapper library for [libMXF](../libMXF/) that supports reading and writing the [SMPTE ST 377-1 MXF file format](https://doi.org/10.5594/SMPTE.ST377-1).
 
 libMXF++ and [libMXF](../libMXF/) are used in the [bmx](../../) project.
 
@@ -10,7 +10,7 @@ libMXF++ was originally developed as part of the [Ingex Project](http://ingex.so
 
 A number of examples can be found in the [examples](./examples) directory. These are not part of the core library and are not required to build [bmx](../../).
 
-* [D10MXFOP1AWriter](./examples/D10MXFOP1AWriter): library code used in the [Ingex Project](http://ingex.sourceforge.net/) for writing [SMPTE ST 386](https://ieeexplore.ieee.org/document/7291350) MXF D-10 (Sony MPEG IMX) files.
+* [D10MXFOP1AWriter](./examples/D10MXFOP1AWriter): library code used in the [Ingex Project](http://ingex.sourceforge.net/) for writing [SMPTE ST 386](https://doi.org/10.5594/SMPTE.ST386.2004) MXF D-10 (Sony MPEG IMX) files.
 * [OPAtomReader](./examples/OPAtomReader): library code used in the [Ingex Project](http://ingex.sourceforge.net/) for recovering Avid MXF OP-Atom files after a system failure.
 
 ## Build, Test and Install

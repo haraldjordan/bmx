@@ -1,8 +1,8 @@
 # IMF ProRes Track Files
 
-The [IMF Flavour](./imf_track_files.md) of `bmxtranswrap` and `raw2bmx` can be used to create Image Track Files conforming to [SMPTE RDD 45](https://ieeexplore.ieee.org/document/8233487) Application ProRes or [SMPTE RDD 59-1](https://ieeexplore.ieee.org/document/9999622) Application DPP (ProRes) (which is based on RDD 45).
+The [IMF Flavour](./imf_track_files.md) of `bmxtranswrap` and `raw2bmx` can be used to create Image Track Files conforming to [SMPTE RDD 45](https://doi.org/10.5594/SMPTE.RDD45.2022) Application ProRes or [SMPTE RDD 59-1](https://doi.org/10.5594/SMPTE.RDD59-1.2022) Application DPP (ProRes) (which is based on RDD 45).
 
-RDD 45 specifies certain [SMPTE RDD 36](https://ieeexplore.ieee.org/document/7438722) ProRes bitstream parameters that must be set. bmx will populate the Essence Descriptor from the bitstream and other values supplied on the command line or as defaults.
+RDD 45 specifies certain [SMPTE RDD 36](https://doi.org/10.5594/SMPTE.RDD36.2022) ProRes bitstream parameters that must be set. bmx will populate the Essence Descriptor from the bitstream and other values supplied on the command line or as defaults.
 
 Here is a snippet of `rdd36dump` output for a suitable [ITU-R BT.2100](https://www.itu.int/rec/R-REC-BT.2100) UHD, HLG transfer function, 25Hz, YCbCr video source bitstream, showing the parameters that are mentioned in RDD 45:
 
@@ -21,7 +21,7 @@ alpha_channel_type: 0 (Not present)
 
 Note that RDD 45 specifies that `aspect_ratio_information` and `frame_rate_code` be ignored by readers, but despite this, if they are not set to "Unknown" they should be the correct values to avoid confusion.
 
-The following example creates an Image Track File, from a bitstream formatted as above, that conforms to version 1.2 of the [BBC UHD Delivery Document](https://www.dropbox.com/s/tkvwxksgy3izpca/TechnicalDeliveryStandardsBBCUHDiPlayerSupplement.pdf?dl=0):
+The following example creates an Image Track File, from a bitstream formatted as above, that conforms to version 1.2 of the [BBC UHD Delivery Document](https://www.bbc.co.uk/delivery/technical-requirements):
 
 ```bash
 raw2bmx -o {Type}_{fp_uuid}.mxf \

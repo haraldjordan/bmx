@@ -1,10 +1,10 @@
 # IMF JPEG 2000 Track Files
 
-The [IMF Flavour](./imf_track_files.md) of `bmxtranswrap` and `raw2bmx` can be used to create Image Track Files conforming to [IMF Application #2E](https://ieeexplore.ieee.org/document/9097487) and [IMF Application #2E Amendment 1](https://ieeexplore.ieee.org/document/9286959).
+The [IMF Flavour](./imf_track_files.md) of `bmxtranswrap` and `raw2bmx` can be used to create Image Track Files conforming to [IMF Application #2E](https://doi.org/10.5594/SMPTE.ST2067-21.2023).
 
 JPEG 2000 is a video compression standard. It is a successor to the JPEG standard that uses a Discrete Wavelet Transform (DWT) rather than a Discrete Cosine Transform (DCT). The JPEG 2000 core video compression is specified in [ISO/IEC 15444-1](http://www.iso.org/iso/catalogue_detail.htm?csnumber=37674) / [ITU T.800](https://www.itu.int/rec/T-REC-T.800).
 
-The wrapping of JPEG 2000 codestreams in MXF is specified in [SMPTE ST 422](https://ieeexplore.ieee.org/document/8984770).
+The wrapping of JPEG 2000 codestreams in MXF is specified in [SMPTE ST 422](https://doi.org/10.5594/SMPTE.ST422.2022).
 
 The implementation currently supports MXF OP1a (IMF or vanilla flavour), YCbCr and RGB component video using a progressive frame layout.
 
@@ -48,7 +48,7 @@ Below is an example commandline for generating an IMF Track File containing [ITU
 
 The JPEG 2000 codestream does not include a frame rate and that's why the `-f 25` option is used to specify 25 Hz. The same applies to the other options that are there to provide metadata that does not exist in the codestream.
 
-This example also includes mastering display color volume metadata (`--display-xxx`) as specified in [IMF Application #2E Amendment 1](https://ieeexplore.ieee.org/document/9286959).
+This example also includes mastering display color volume metadata (`--display-xxx`) as specified in [IMF Application #2E](https://doi.org/10.5594/SMPTE.ST2067-21.2023).
 
 A similar commandline for RGB is shown below, where the main difference is the use of component reference levels and scanning direction options.
 
