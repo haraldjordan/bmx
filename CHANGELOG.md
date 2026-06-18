@@ -1,5 +1,11 @@
 # bmx Changelog
 
+## v1.8
+
+### Features
+
+ * MXFDump new flag "--dict smpte" for more complete Label interpretion and more SMPTE near naming
+
 ## v1.7
 
 ### Breaking changes
