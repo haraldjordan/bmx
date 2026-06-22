@@ -1,4 +1,4 @@
-This information was provided by Thomas Heritage (and colleagues), co-maintainer of BMX until 2025 when the project was handed over from the BBC to the EBU. 
+This information was provided by Thomas Heritage and colleagues, @thomasheritage was co-maintainer of BMX until 2025 when the project was handed over from the BBC to the EBU. 
 
 **Question asked:** Could you tell us something about the origins of BMX?
 
